@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto Mono');
+
+* {
+    font-family: 'Roboto Mono';
+}
+
+body {
+    background-color: #1c3f62;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#startContainer {
+    background-color: #eac864;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #0f2a3d;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #555;
+}
+
+button {
+    background-color: #1c3f62;
+    color: white;
+    padding: 10px 20px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0f2a3d;
+}
+
+#backToHomeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #9b4230;
+    color: white;
+    padding: 10px 18px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#backToHomeButton:hover {
+    background-color: #782d23;
+}
+
+#restartPopupButton {
+    background-color: #1c3f62;
+    color: white;
+    padding: 10px 20px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#restartPopupButton:hover {
+    background-color: #0f2a3d;
+}
+
+#gameContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#targetSpawnArea {
+    position: relative;
+    width: 1000px;
+    height: 1000px;
+    background-color: #447be1;
+    border-radius: 20px;
+    border: 5px solid #98c9fa;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#timer {
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    color: #e3eae8;
+    z-index: 1;
+    user-select: none;
+}
+
+#target {
+    background-image: url('images/abhs-logo.png');
+    width: 96px;
+    height: 148px;
+    background-size: cover;
+    position: absolute;
+    display: none;
+}
+
+.popup {
+    z-index: 2;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #e8c253;
+    border: 2px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+#finalScore {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#scoreValue {
+    font-weight: bold;
+}
+
+#restartPopupButton {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#credits {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 50px;
+    color: #a4b2c0;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #1c3f62;
+    padding: 10px;
+}
+
+#smallLogo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: auto;
+}
