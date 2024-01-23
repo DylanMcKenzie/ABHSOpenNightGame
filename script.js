@@ -3,14 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const target = document.getElementById('target');
     const scorePopup = document.getElementById('scorePopup');
     const finalScoreElement = document.getElementById('finalScore');
+    const avrgRTElement = document.getElementById('avrgRT');
     const restartPopupButton = document.getElementById('restartPopupButton');
     const backToHomeButton = document.getElementById('backToHomeButton');
     const timerElement = document.getElementById('timer');
     const reactionTimes = [];
-    let startTime, endTime, timer, score;
+    let startTime, endTime, timer = 30, score = 0, reactionTimeSum = 0, averageRT = 0;
 
-    score = 0;
-    timer = 30;
     timerElement.innerText = timer;
     showTarget();
     countdown();
@@ -32,7 +31,17 @@ document.addEventListener('DOMContentLoaded', function () {
             startTime = new Date();
         }
     }
-    
+
+    function avrgReactionTime() {
+        reactionTimes.forEach(function (time) {
+            reactionTimeSum += time;
+        })
+
+        if (reactionTimes.length > 0) {
+            averageRT = Math.floor(reactionTimeSum / reactionTimes.length);
+        }
+    }
+
     function hideTarget() {
         target.style.display = 'none';
     }
@@ -42,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function targetClicked() {
+        endTime = new Date();
+        const reactionTime = endTime - startTime;
+        reactionTimes.push(reactionTime);
         hideTarget();
         showTarget();
         updateScore();
@@ -59,7 +71,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function displayScorePopup() {
+        avrgReactionTime()
         finalScoreElement.innerHTML = `Final Score: <span id="scoreValue">${score}</span>`;
+        avrgRTElement.innerHTML = `Average Reaction: <span id="scoreValue">${averageRT}ms</span>`;
         scorePopup.style.display = 'block';
     }
 
@@ -68,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         scorePopup.style.display = 'none';
         score = 0;
         timer = 30;
+        reactionTimes = [];
         timerElement.innerText = timer;
         setTimeout(countdown, 1000);
         showTarget();
