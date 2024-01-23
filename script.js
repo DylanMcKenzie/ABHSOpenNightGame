@@ -6,13 +6,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const restartPopupButton = document.getElementById('restartPopupButton');
     const backToHomeButton = document.getElementById('backToHomeButton');
     const timerElement = document.getElementById('timer');
-    let startTime, endTime, timer, interval, score;
+    const reactionTimes = [];
+    let startTime, endTime, timer, score;
 
     score = 0;
     timer = 30;
     timerElement.innerText = timer;
-    interval = setInterval(countdown, 1000);
     showTarget();
+    countdown();
 
     function showTarget() {
         if (!scorePopup.style.display || scorePopup.style.display === 'none') {
@@ -21,17 +22,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetHeight = 148;
             const maxX = spawnAreaRect.width - targetWidth;
             const maxY = spawnAreaRect.height - targetHeight;
-            const randomX = Math.min(Math.max(spawnAreaRect.left + 5 + Math.random() * maxX, spawnAreaRect.left + 5), spawnAreaRect.right - targetWidth);
-            const randomY = Math.min(Math.max(spawnAreaRect.top + 5 + Math.random() * maxY, spawnAreaRect.top), spawnAreaRect.bottom - targetHeight);
+            const randomX = Math.min(Math.max(spawnAreaRect.left + Math.random() * maxX, spawnAreaRect.left), spawnAreaRect.right - targetWidth);
+            const randomY = Math.min(Math.max(spawnAreaRect.top + Math.random() * maxY, spawnAreaRect.top), spawnAreaRect.bottom - targetHeight);
 
             target.style.left = `${randomX}px`;
             target.style.top = `${randomY}px`;
 
             target.style.display = 'block';
-            //startTime = new Date();
+            startTime = new Date();
         }
     }
-
+    
     function hideTarget() {
         target.style.display = 'none';
     }
@@ -41,9 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function targetClicked() {
-        //endTime = new Date();
-        //const reactionTime = endTime - startTime;
-        //console.log(`Reaction time: ${reactionTime} milliseconds`);
         hideTarget();
         showTarget();
         updateScore();
@@ -52,11 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function countdown() {
         let timeLeft = parseInt(timerElement.innerText);
         if (timeLeft === 0) {
-            clearInterval(interval);
             displayScorePopup();
         } else {
             timeLeft--;
             timerElement.innerText = timeLeft;
+            setTimeout(countdown, 1000);
         }
     }
 
@@ -71,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         score = 0;
         timer = 30;
         timerElement.innerText = timer;
-        interval = setInterval(countdown, 1000);
+        setTimeout(countdown, 1000);
         showTarget();
     }
 
