@@ -131,7 +131,7 @@ button:hover {
     text-align: center;
 }
 
-#finalScore {
+#finalScore, #avrgRT {
     font-size: 30px;
     margin-bottom: 10px;
 }
