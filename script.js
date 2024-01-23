@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const restartPopupButton = document.getElementById('restartPopupButton');
     const backToHomeButton = document.getElementById('backToHomeButton');
     const timerElement = document.getElementById('timer');
-    const reactionTimes = [];
-    let startTime, endTime, timer = 30, score = 0, reactionTimeSum = 0, averageRT = 0;
+    let startTime, endTime, timer = 30, score = 0, reactionTimeSum = 0, averageRT = 0, reactionTimes = [];
 
     timerElement.innerText = timer;
     showTarget();
@@ -23,10 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const maxY = spawnAreaRect.height - targetHeight;
             const randomX = Math.min(Math.max(spawnAreaRect.left + Math.random() * maxX, spawnAreaRect.left), spawnAreaRect.right - targetWidth);
             const randomY = Math.min(Math.max(spawnAreaRect.top + Math.random() * maxY, spawnAreaRect.top), spawnAreaRect.bottom - targetHeight);
-
             target.style.left = `${randomX}px`;
             target.style.top = `${randomY}px`;
-
             target.style.display = 'block';
             startTime = new Date();
         }
