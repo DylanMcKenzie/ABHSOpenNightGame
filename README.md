@@ -8,4 +8,4 @@ This is a simple game I made for the open night for P7 students looking to come 
 3. You have 30 seconds to click as many as you can, good luck!
 
 ## Preview
-![Game Preview](images/example.gif)
+![Game Preview](images/preview.gif)
