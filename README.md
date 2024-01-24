@@ -1,5 +1,7 @@
 # ABHS Open Night Reaction Time Game
-This is a simple game I made for the open night for P7 students looking to come to my school(Ashfield Boys' High School) to demostrate what could be created in the coding club that I run for younger pupils! 
+This is a simple yet engaging game I made for the open night aimed at P7 students looking to come to my school(Ashfield Boys' High School) to demostrate what could be created in the coding club that I run for younger pupils! 
+
+##  [Play the Game](https://dylanmckenzie.github.io/ABHSOpenNightGame/)
 
 ## How to Play
 
