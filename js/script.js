@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
         scorePopup.style.display = 'none';
         score = 0;
         timer = 30;
+        reactionTimeSum = 0;
         reactionTimes = [];
         timerElement.innerText = timer;
         setTimeout(countdown, 1000);
