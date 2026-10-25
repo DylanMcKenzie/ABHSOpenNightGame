@@ -179,3 +179,15 @@ main, #credits { position: relative; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .button:active { transform: none; }
 }
+@media (max-height: 500px) and (min-width: 600px) {
+  .popup { width: min(640px, calc(100% - 32px)); padding: 24px; }
+  .popup[open] { display: grid; grid-template-columns: 1fr 1.2fr; column-gap: 24px; align-items: center; }
+  .result-crest { display: none; }
+  .popup h2, .popup > p { grid-column: 1; }
+  .popup h2 { font-size: 28px; }
+  .popup > p { font-size: 13px; }
+  .results-stats { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding: 12px 0; }
+  .results-stats dd { font-size: 28px; }
+  .popup .button { grid-column: 1 / -1; margin-top: 24px; }
+  .home-link { grid-column: 1 / -1; }
+}
