@@ -2,26 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Play · ABHS Reaction Time Game</title>
+  <link rel="icon" type="image/png" href="images/abhs-favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/abhs-logo.png">
   <link rel="stylesheet" href="styles.css">
-  <title>ABHS Reaction Time Game</title>
-  <link rel="icon" type="image/x-icon" href="images/abhs-favicon.png">
-  <script src="js/script.js"></script>
+  <script src="js/script.js" defer></script>
+  <script src="js/lib/particles.js" defer></script>
+  <script src="js/app.js" defer></script>
 </head>
-<body>
-  <div id="particles-js"></div>
-  <div id="gameContainer">
-    <div id="targetSpawnArea"></div>
-    <div id="timer">30</div>
-    <div id="target"></div>
-    <div class="popup" id="scorePopup">
-      <div id="finalScore"></div>
-      <div id="avrgRT"></div>
-      <button id="restartPopupButton">Restart Game</button>
+<body class="game-page">
+  <div id="particles-js" aria-hidden="true"></div>
+  <main id="gameContainer">
+    <header class="game-header">
+      <h1>Ashfield<br><span>Reaction Time Game</span></h1>
+      <div class="time-display" role="timer" aria-label="Time remaining" aria-live="off"><span id="timer">30</span><span class="time-label">seconds left</span></div>
+      <a class="button button-secondary" id="backToHomeButton" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6"/></svg>Home</a>
+    </header>
+    <div id="targetSpawnArea" aria-label="Play area" aria-describedby="playInstructions">
+      <button id="target" type="button" aria-label="Catch the Ashfield crest" hidden disabled><img src="images/abhs-logo.png" width="244" height="384" alt="" draggable="false"></button>
     </div>
-    <a href="index.html"><button id="backToHomeButton">Back to Home Page</button></a>
-    <script src="js/lib/particles.js"></script>
-    <script src="js/app.js"></script>
-  </div>
+    <p id="playInstructions">Click or tap the crest. Keep going until time’s up!</p>
+    <noscript><p class="no-script">Please enable JavaScript to play the game.</p></noscript>
+  </main>
+  <dialog class="popup" id="scorePopup" aria-labelledby="resultsTitle" aria-describedby="resultsMessage">
+    <img class="result-crest" src="images/abhs-logo.png" width="244" height="384" alt="">
+    <h2 id="resultsTitle">Time’s up!</h2>
+    <p id="resultsMessage">Nice work! Fancy another go?</p>
+    <dl class="results-stats">
+      <div><dt>Final score</dt><dd id="finalScore">0</dd></div>
+      <div><dt>Average reaction</dt><dd><span id="avrgRT">—</span><span class="stat-unit" id="reactionUnit"> ms</span></dd></div>
+    </dl>
+    <button class="button" id="restartPopupButton" type="button" autofocus>Restart Game <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8a8 8 0 1 0 1 7M19 3v5h-5"/></svg></button>
+    <a class="home-link" href="index.html">Back to Home Page</a>
+  </dialog>
+  <footer id="credits">Game created by <strong>Dylan McKenzie</strong></footer>
 </body>
 </html>
